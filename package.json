@@ -13,7 +13,7 @@
     "clean:build": "rimraf server/build",
     "eject": "react-scripts-ts eject",
     "start:react": "react-scripts-ts start",
-    "start:server": "nodemon server/server.js",
+    "start:server": "nodemon server/index.js",
     "start": "run-p start:react start:server",
     "test": "react-scripts-ts test --env=jsdom"
   },
