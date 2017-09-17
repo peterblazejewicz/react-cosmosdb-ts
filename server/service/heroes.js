@@ -11,6 +11,15 @@ mongo
   });
 
 const get = (req, res) => {
+  const heroes = [
+    {
+      id: 0,
+      name: 'The Tick',
+      saying: 'Spooon!',
+    },
+  ];
+  res.json(heroes);
+  return;
   const docquery = Hero.find({}).read(ReadPreference.NEAREST);
   docquery
     .exec()

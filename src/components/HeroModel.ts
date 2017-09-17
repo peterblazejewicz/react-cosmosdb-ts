@@ -3,3 +3,5 @@ interface HeroModel {
   name?: string;
   saying?: string;
 }
+
+type SelectedHero = HeroModel | null;
