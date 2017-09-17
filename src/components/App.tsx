@@ -1,15 +1,13 @@
 import './App.css';
-import React from 'react';
+import React, { SFC } from 'react';
+import Heroes from './Heroes';
 
-class App extends React.Component {
-  render() {
-    return (
-      <div>
-        <h1>Heroes</h1>
-        <div className="header-bar" />
-      </div>
-    );
-  }
-}
+const App: SFC = () => (
+  <div>
+    <h1>Heroes</h1>
+    <div className="header-bar" />
+    <Heroes />
+  </div>
+);
 
 export default App;
