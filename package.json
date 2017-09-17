@@ -8,7 +8,7 @@
     "react-scripts-ts": "2.7.0"
   },
   "scripts": {
-    "build:react": "react-scripts build && mv build server",
+    "build:react": "react-scripts-ts build && mv build server",
     "build": "run-s clean:build build:react",
     "clean:build": "rimraf server/build",
     "eject": "react-scripts-ts eject",
