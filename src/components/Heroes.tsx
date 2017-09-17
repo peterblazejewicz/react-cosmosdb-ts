@@ -13,7 +13,7 @@ interface HeroesState {
 class Heroes extends Component<{}, HeroesState> {
   state: HeroesState = {
     heroes: [],
-    addingHero: false,
+    addingHero: false
   };
 
   @autobind
@@ -29,6 +29,18 @@ class Heroes extends Component<{}, HeroesState> {
   }
 
   @autobind
+  handleEnableAddHero() {
+    this.setState({
+      addingHero: true,
+      selectedHero: {
+        id: 0,
+        name: '',
+        saying: '',
+      },
+    });
+  }
+
+  @autobind
   handleSave() {
     Math.random();
   }
@@ -37,6 +49,7 @@ class Heroes extends Component<{}, HeroesState> {
   handleCancel() {
     this.setState({
       selectedHero: null,
+      addingHero: false,
     });
   }
 
@@ -70,6 +83,7 @@ class Heroes extends Component<{}, HeroesState> {
           })}
         </ul>
         <div className="editarea">
+          <button onClick={this.handleEnableAddHero}>Add New Hero</button>
           <EditHero
             addingHero={this.state.addingHero}
             selectedHero={this.state.selectedHero}
