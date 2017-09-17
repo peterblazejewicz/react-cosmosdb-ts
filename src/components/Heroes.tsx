@@ -3,6 +3,7 @@ import autobind from 'autobind-decorator';
 import Hero from './Hero';
 import React, { Component, ChangeEvent } from 'react';
 import EditHero from './EditHero';
+import HeroService from '../service/heroes';
 
 interface HeroesState {
   heroes: HeroModel[];
@@ -13,7 +14,7 @@ interface HeroesState {
 class Heroes extends Component<{}, HeroesState> {
   state: HeroesState = {
     heroes: [],
-    addingHero: false
+    addingHero: false,
   };
 
   @autobind
@@ -61,11 +62,9 @@ class Heroes extends Component<{}, HeroesState> {
   }
 
   componentDidMount() {
-    fetch('/api/heroes')
-      .then(result => result.json())
-      .then(json => {
-        this.setState({ heroes: json });
-      });
+    HeroService.get().then(heroes => {
+      this.setState({ heroes });
+    });
   }
   render() {
     return (
