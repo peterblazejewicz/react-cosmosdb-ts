@@ -8,15 +8,24 @@
     "react-scripts-ts": "2.7.0"
   },
   "scripts": {
-    "start": "react-scripts-ts start",
-    "build": "react-scripts-ts build",
-    "test": "react-scripts-ts test --env=jsdom",
-    "eject": "react-scripts-ts eject"
+    "build:react": "react-scripts build && mv build server",
+    "build": "run-s clean:build build:react",
+    "clean:build": "rimraf server/build",
+    "eject": "react-scripts-ts eject",
+    "start:react": "react-scripts-ts start",
+    "start:server": "nodemon server/server.js",
+    "start": "run-p start:react start:server",
+    "test": "react-scripts-ts test --env=jsdom"
   },
   "devDependencies": {
     "@types/jest": "^20.0.8",
     "@types/node": "^8.0.28",
     "@types/react": "^16.0.5",
-    "@types/react-dom": "^15.5.4"
-  }
+    "@types/react-dom": "^15.5.4",
+    "concurrently": "^3.5.0",
+    "nodemon": "^1.12.1",
+    "npm-run-all": "^4.1.1",
+    "rimraf": "^2.6.2"
+  },
+  "proxy": "http://localhost:3001"
 }
